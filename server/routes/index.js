@@ -1,5 +1,5 @@
-const readings = require('./readings');
+const results = require('./readings');
 
 module.exports = (app) => {
-    app.use('/readings', readings);
+    app.use('/results', results);
 }
