@@ -1,4 +1,4 @@
-const results = require('./readings');
+const results = require('./result');
 
 module.exports = (app) => {
     app.use('/results', results);

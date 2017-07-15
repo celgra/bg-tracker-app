@@ -5,8 +5,9 @@ const routes = require('./routes');
 
 const port = process.env.PORT || 3000;
 
-const app = express();
+const { mongoose } = require('./db/mongoose');
 
+const app = express();
 const router = routes(app);
 
 app.listen(port, () => {
