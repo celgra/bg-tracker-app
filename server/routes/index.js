@@ -1,5 +1,6 @@
+const routes = require('express').Router();
 const results = require('./result');
 
-module.exports = (app) => {
-    app.use('/results', results);
-}
+routes.use('/results', results);
+
+module.exports = routes;

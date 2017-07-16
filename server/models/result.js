@@ -21,3 +21,5 @@ const Result = mongoose.model('Result', {
         required: true
     }
 });
+
+module.exports = { Result }
