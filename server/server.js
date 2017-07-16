@@ -8,8 +8,6 @@ const port = process.env.PORT || 3000;
 
 const { mongoose } = require('./db/mongoose');
 
-console.log(mongoose.connections);
-
 const app = express();
 
 app.use(
