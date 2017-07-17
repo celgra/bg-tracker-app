@@ -86,4 +86,7 @@ function mapStateToProps(state) {
     return { results };
 }
 
-export default connect(mapStateToProps, { fetchResultsByMonth })(BloodGlucoseMonthLog);
+export default connect(
+    mapStateToProps, 
+    { fetchResultsByMonth }
+)(BloodGlucoseMonthLog);

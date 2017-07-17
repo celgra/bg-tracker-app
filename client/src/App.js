@@ -9,7 +9,10 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <header className="app-header navbar">
+        <header className="app-header navbar header-fixed">
+          <div>
+            Blood Glucose Tracker App
+          </div>
         </header>
         <div className="app-body">
           <main className="main">
