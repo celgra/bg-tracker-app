@@ -9,7 +9,7 @@ class BloodGlucoseMonthLog extends Component {
     constructor(props) {
         super(props);
 
-        let date = moment()
+        let date = moment();
         let month = date.month() + 1;
         let year = date.year();
 
