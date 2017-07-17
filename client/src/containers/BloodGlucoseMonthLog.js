@@ -6,21 +6,38 @@ import BloodGlucoseMonthLogTable from './../components/BloodGlucoseMonthLogTable
 import { fetchResultsByMonth } from './../actions/actions_results';
 
 class BloodGlucoseMonthLog extends Component {
-    componentDidMount() {
+    constructor(props) {
+        super(props);
+
         let date = moment()
         let month = date.month() + 1;
         let year = date.year();
 
-        this.props.fetchResultsByMonth(month, year);
+        this.state = { selectedMonth: month, selectedYear: year  };
+    }
+
+    componentDidMount() {
+        let { selectedMonth, selectedYear } = this.state;
+
+        this.props.fetchResultsByMonth(selectedMonth, selectedYear);
     }
 
     incrementMonth() {
-        let { month, year } = this.props;
+        let { selectedMonth, selectedYear } = this.state;
 
         if (month + 1 > 12) {
             month = 1
             year =+ 1;
+        } else {
+            month =+ 1;
         }
+
+        this.setState(() => {
+             return { 
+                 selectedMonth: month, 
+                 selectedYear: year 
+                } 
+            });
 
         this.fetchResultsByMonth(month, year);
     }
@@ -29,8 +46,8 @@ class BloodGlucoseMonthLog extends Component {
         return(
             <div className="container-fluid">
                 <BloodGlucoseMonthLogTable
-                month={this.props.month} 
-                year={this.props.year}
+                month={this.state.selectedMonth} 
+                year={this.state.selectedYear}
                 results={this.props.results}/>
             </div>
         );
@@ -40,10 +57,8 @@ class BloodGlucoseMonthLog extends Component {
 
 function mapStateToProps(state) {
     let results = _.values(state.results);
-    let month = (results.length > 1 ? new Date(results[0].submittedDate).getMonth() + 1 : -1);
-    let year = (results.length > 1 ? new Date(results[0].submittedDate).getFullYear() : -1);
 
-    return { results, month, year };
+    return { results };
 }
 
 export default connect(mapStateToProps, { fetchResultsByMonth })(BloodGlucoseMonthLog);
