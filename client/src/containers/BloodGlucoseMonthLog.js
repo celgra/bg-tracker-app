@@ -10,10 +10,10 @@ class BloodGlucoseMonthLog extends Component {
         super(props);
 
         let date = moment();
-        let month = date.month() + 1;
-        let year = date.year();
+        let selectedMonth = date.month() + 1;
+        let selectedYear = date.year();
 
-        this.state = { selectedMonth: month, selectedYear: year  };
+        this.state = { selectedMonth, selectedYear  };
     }
 
     componentDidMount() {
