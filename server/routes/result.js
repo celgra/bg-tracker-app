@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
     );
 
     result.save().then((result) => {
-        res.status(201).send(result);
+        res.status(201).send({ result });
     }, (e) => {
         res.status(400).send(e);
     })
