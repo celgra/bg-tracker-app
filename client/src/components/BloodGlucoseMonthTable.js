@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const BloodGlucoseMonthTable = (props) => {
     let rows = props.results ? props.results.map(result => {
@@ -8,7 +9,7 @@ const BloodGlucoseMonthTable = (props) => {
                         {result.user}
                     </td>
                     <td>
-                        {result.submittedDate}
+                        {moment(result.submittedDate).format("dddd, MMMM D YYYY")}
                     </td>
                     <td>
                         {result._id}
