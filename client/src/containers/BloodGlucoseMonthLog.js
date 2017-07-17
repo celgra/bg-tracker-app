@@ -2,10 +2,10 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import BloodGlucoseMonthTable from './../components/BloodGlucoseMonthTable';
+import BloodGlucoseMonthLogTable from './../components/BloodGlucoseMonthLogTable';
 import { fetchResultsByMonth } from './../actions/actions_results';
 
-class BloodGlucoseMonth extends Component {
+class BloodGlucoseMonthLog extends Component {
     componentDidMount() {
         let date = moment()
         let month = date.month() + 1;
@@ -14,10 +14,21 @@ class BloodGlucoseMonth extends Component {
         this.props.fetchResultsByMonth(month, year);
     }
 
+    incrementMonth() {
+        let { month, year } = this.props;
+
+        if (month + 1 > 12) {
+            month = 1
+            year =+ 1;
+        }
+
+        this.fetchResultsByMonth(month, year);
+    }
+
     render() {
         return(
             <div className="container-fluid">
-                <BloodGlucoseMonthTable
+                <BloodGlucoseMonthLogTable
                 month={this.props.month} 
                 year={this.props.year}
                 results={this.props.results}/>
@@ -35,4 +46,4 @@ function mapStateToProps(state) {
     return { results, month, year };
 }
 
-export default connect(mapStateToProps, { fetchResultsByMonth })(BloodGlucoseMonth);
+export default connect(mapStateToProps, { fetchResultsByMonth })(BloodGlucoseMonthLog);

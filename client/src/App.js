@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import BloodGlucoseMonth from './containers/BloodGlucoseMonth';
+import BloodGlucoseMonthLog from './containers/BloodGlucoseMonthLog';
 
 //import logo from './logo.svg';
 //import './App.css';
@@ -15,7 +15,7 @@ class App extends Component {
           <main className="main">
             <div>
               <Switch>
-                <Route exact path={`/`} component={BloodGlucoseMonth} />
+                <Route exact path={`/`} component={BloodGlucoseMonthLog} />
               </Switch>
             </div>
           </main>

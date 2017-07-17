@@ -27,7 +27,7 @@ const BloodGlucoseMonthTable = (props) => {
         }) : null;
 
     return (
-        <table className="table table-bordered table-striped table-condensed">
+        <table className="table table-bordered table-striped table-condensed table-inverse">
             <thead>
                 <tr>
                     <th colSpan="4" className="text-center">
