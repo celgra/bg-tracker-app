@@ -9,7 +9,7 @@ const parseDateWithMoment = (date) => {
 const BloodGlucoseMonthTable = (props) => {
     let rows = props.results ? props.results.map(result => {
             return (
-                <tr>
+                <tr key={result._id}>
                     <td>
                         {result.user}
                     </td>
@@ -30,8 +30,14 @@ const BloodGlucoseMonthTable = (props) => {
         <table className="table table-bordered table-striped table-condensed table-inverse">
             <thead>
                 <tr>
-                    <th colSpan="4" className="text-center">
-                    {`${props.month} / ${props.year}`}
+                    <th colSpan="4" className="text-center"> 
+                        <i className="fa fa-chevron-left" 
+                        onClick={props.decrementMonth} />
+                        &nbsp;
+                        {`${props.month} / ${props.year}`}
+                        &nbsp;
+                        <i className="fa fa-chevron-right" 
+                        onClick={props.incrementMonth} />
                     </th>
                 </tr>
                 <tr>

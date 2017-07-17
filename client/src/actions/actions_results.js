@@ -1,6 +1,7 @@
 import axios from 'axios'; 
 
 export const FETCH_RESULTS = 'FETCH_RESULTS';
+export const FETCH_RESULTS_ERROR = 'FETCH_RESULTS_ERROR';
 
  const ROOT_URL = 'http://localhost:3001/api';
 
@@ -19,7 +20,9 @@ export const FETCH_RESULTS = 'FETCH_RESULTS';
 
      return (dispatch) => {
         request.then((data) => {
-            dispatch({type: FETCH_RESULTS, payload: data});
+            dispatch({ type: FETCH_RESULTS, payload: data });
+        }, (err) => {
+            dispatch({ type: 'FETCH_RESULTS_ERROR' });
         });
      };
  }

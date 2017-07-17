@@ -25,30 +25,55 @@ class BloodGlucoseMonthLog extends Component {
     incrementMonth() {
         let { selectedMonth, selectedYear } = this.state;
 
-        if (month + 1 > 12) {
-            month = 1
-            year =+ 1;
+        if ( (selectedMonth + 1) > 12) {
+            selectedMonth = 1
+            selectedYear++;
         } else {
-            month =+ 1;
+            selectedMonth++;
         }
 
         this.setState(() => {
              return { 
-                 selectedMonth: month, 
-                 selectedYear: year 
+                 selectedMonth, 
+                 selectedYear 
                 } 
             });
 
-        this.fetchResultsByMonth(month, year);
+        this.props.fetchResultsByMonth(selectedMonth, selectedYear);
+    }
+
+    decrementMonth() {
+        let { selectedMonth, selectedYear } = this.state;
+
+        if ( (selectedMonth - 1) < 1) {
+            selectedMonth = 12
+            selectedYear--;
+        } else {
+            selectedMonth--;
+        }
+
+        this.setState(() => {
+             return { 
+                 selectedMonth, 
+                 selectedYear 
+                } 
+            });
+
+        this.props.fetchResultsByMonth(selectedMonth, selectedYear);
     }
 
     render() {
+        let { selectedMonth, selectedYear } = this.state;
+        let { results } = this.props;
+
         return(
             <div className="container-fluid">
                 <BloodGlucoseMonthLogTable
-                month={this.state.selectedMonth} 
-                year={this.state.selectedYear}
-                results={this.props.results}/>
+                month={selectedMonth} 
+                year={selectedYear}
+                results={results}
+                incrementMonth={() => this.incrementMonth()}
+                decrementMonth={() => this.decrementMonth()} />
             </div>
         );
     }
