@@ -29,4 +29,22 @@ router.post('/', (req, res) => {
 
 });
 
+router.get('/:month/:year/', (req, res) => {
+    let { month, year } = req.params;
+    let startDate = new Date(year, month - 1);
+    let endDate = new Date(year, month);
+
+    Result.find(
+        { submittedDate: {
+            "$gte": startDate,
+            "$lt": endDate
+        } 
+    }
+    ).then((results) => {
+        res.send({ results });
+    }, (e) => {
+        res.status(404).send();
+    })
+});
+
 module.exports = router;
