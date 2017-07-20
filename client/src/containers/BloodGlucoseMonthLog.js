@@ -90,9 +90,9 @@ function mapStateToProps(state) {
     return { results };
 }
 
-const dispatchObject = { fetchResultsByMonth, addResult };
+const mapDispatchToProps = { 
+    fetchResultsByMonth, 
+    addResult 
+};
 
-export default connect(
-    mapStateToProps,
-    dispatchObject 
-)(BloodGlucoseMonthLog);
+export default connect(mapStateToProps, mapDispatchToProps)(BloodGlucoseMonthLog);
