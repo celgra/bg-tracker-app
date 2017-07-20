@@ -93,12 +93,6 @@ function mapStateToProps(state) {
 const dispatchObject = { fetchResultsByMonth, addResult };
 
 export default connect(
-<<<<<<< HEAD
     mapStateToProps,
     dispatchObject 
 )(BloodGlucoseMonthLog);
-=======
-    mapStateToProps, 
-    { fetchResultsByMonth }
-)(BloodGlucoseMonthLog);
->>>>>>> 82bd0efaf3d6c84e0a2f4cd1e3751163754eeb08
