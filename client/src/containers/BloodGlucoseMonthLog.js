@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import BloodGlucoseMonthLogTable from './../components/BloodGlucoseMonthLogTable';
-import { fetchResultsByMonth } from './../actions/actions_results';
+import { fetchResultsByMonth, addResult } from './../actions/actions_results';
 
 class BloodGlucoseMonthLog extends Component {
     constructor(props) {
@@ -68,6 +68,10 @@ class BloodGlucoseMonthLog extends Component {
 
         return(
             <div className="container-fluid">
+                <div className="btn btn-primary" 
+                onClick={() => addResult()}>
+                Add
+                </div>
                 <BloodGlucoseMonthLogTable
                 month={selectedMonth} 
                 year={selectedYear}
@@ -86,7 +90,9 @@ function mapStateToProps(state) {
     return { results };
 }
 
+const dispatchObject = { fetchResultsByMonth, addResult };
+
 export default connect(
-    mapStateToProps, 
-    { fetchResultsByMonth }
+    mapStateToProps,
+    dispatchObject 
 )(BloodGlucoseMonthLog);
