@@ -8,3 +8,5 @@ I began to use a simple and affordable glucose meter and I quickly was left for 
 Although there are established apps on the market, I enjoyed the idea of creating a project as my diabetic self as the user and client.
 
 Work in progress. Criticism and advice are welcome.
+
+[Trello Board](https://trello.com/b/PVswNIJN/bg-tracker-app) 
