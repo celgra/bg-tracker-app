@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import BloodGlucoseMonthLogTable from './../components/BloodGlucoseMonthLogTable';
+import BgResultForm from './../components/BgResultForm';
+import AddButton from './../components/AddButton';
 import { fetchResultsByMonth, addResult } from './../actions/actions_results';
 
 class BloodGlucoseMonthLog extends Component {
@@ -13,7 +15,12 @@ class BloodGlucoseMonthLog extends Component {
         let selectedMonth = date.month() + 1;
         let selectedYear = date.year();
 
-        this.state = { selectedMonth, selectedYear  };
+
+        this.state = { 
+            selectedMonth,
+            selectedYear,
+            addingResult: false
+        };
     }
 
     componentDidMount() {
@@ -62,16 +69,31 @@ class BloodGlucoseMonthLog extends Component {
         this.props.fetchResultsByMonth(selectedMonth, selectedYear);
     }
 
+    enableResultForm() {
+        this.setState(() => { return { addingResult: true } });
+        console.log(this.state.addingResult);
+    }
+
+    disableResultForm() {
+        this.setState(() => { return { addingResult: false } });
+    }
+
     render() {
         let { selectedMonth, selectedYear } = this.state;
         let { results } = this.props;
+        let form = this.state.addingResult ? 
+        <BgResultForm 
+        closeForm={() => {this.disableResultForm()}} /> 
+        : null;
 
         return(
             <div className="container-fluid">
-                <div className="btn btn-primary" 
-                onClick={() => addResult()}>
+                <AddButton
+                isAddingResult = {this.state.addingResult}
+                addResult={() => this.enableResultForm()}>
                 Add
-                </div>
+                </AddButton>
+                {form}
                 <BloodGlucoseMonthLogTable
                 month={selectedMonth} 
                 year={selectedYear}

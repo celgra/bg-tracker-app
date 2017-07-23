@@ -7,13 +7,16 @@ const Result = mongoose.model('Result', {
         required: true,
         min: 0
     },
-    submittedDate: {
+    resultDate: {
         type: Date,
         required: true,
-        default: new Date().getTime()
     },
     editedDate: {
         type: Date,
+        default: new Date().getTime()
+    },
+    resultContext: {
+        type: String,
         default: null
     },
     user: {
