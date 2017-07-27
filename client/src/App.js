@@ -15,7 +15,7 @@ class App extends Component {
           </div>
         </header>
         <div className="app-body">
-          <main className="main">
+          <main className="main" style={{marginTop: 20}}>
             <div>
               <Switch>
                 <Route exact path={`/`} component={BloodGlucoseMonthLog} />

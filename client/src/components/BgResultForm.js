@@ -11,7 +11,8 @@ const BgResultForm = (props) => {
                     <div className="col-sm-12">
                         <div className="form-group">
                             <label>Blood Glucose Level</label>
-                            <input type="number" 
+                            <input type="number"
+                            min="1"
                             className="form-control"
                             placeholder="Enter BG reading..." />
                         </div>

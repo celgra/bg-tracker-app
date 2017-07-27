@@ -87,7 +87,7 @@ class BloodGlucoseMonthLog extends Component {
         : null;
 
         return(
-            <div className="container-fluid">
+            <div className="container">
                 <AddButton
                 isAddingResult = {this.state.addingResult}
                 addResult={() => this.enableResultForm()}>

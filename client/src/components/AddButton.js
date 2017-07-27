@@ -1,16 +1,15 @@
 import React from 'react';
 
+import './AddButton.css';
+
 const AddButton = (props) => {
     if(props.isAddingResult){
-        return (
-            <button className="btn btn-primary"
-            disabled>
-                Add
-            </button>
-        );
+        return null;
     } else {
         return (
-            <button className="btn btn-primary"
+            <button
+            type="button"
+            className="btn btn-primary add-button"
             onClick={props.addResult}>
                 Add
             </button>
