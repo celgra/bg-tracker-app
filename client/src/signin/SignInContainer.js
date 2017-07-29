@@ -45,7 +45,7 @@ class SignInContainer extends Component {
     }
 
     render() {
-        let { authenticate, auth } = this.props;
+        let { authenticate, auth, logIn } = this.props;
         let modal = this.state.isModelOpen ? 
             <Modal>
                 <RegisterModal

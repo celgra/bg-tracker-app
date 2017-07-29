@@ -3,7 +3,6 @@ const { ObjectID } = require('mongodb');
 const { Result } = require('./../models/result');
 
 router.get('/', (req, res) => {
-    console.log('running');
     Result.find().then((results) => {
         res.send({ results });
     }, (e) => {
@@ -12,7 +11,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    console.log('posting...')
     let { bloodGlucoseLevel } = req.body;
     let result = new Result(
         { 
@@ -35,7 +33,7 @@ router.get('/:month/:year/', (req, res) => {
     let endDate = new Date(year, month);
 
     Result.find(
-        { submittedDate: {
+        { resultDate: {
             "$gte": startDate,
             "$lt": endDate
         } 

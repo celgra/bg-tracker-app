@@ -5,39 +5,38 @@ export const FETCH_RESULTS_ERROR = 'FETCH_RESULTS_ERROR';
 export const ADD_RESULT = 'ADD_RESULT';
 export const ADD_RESULT_SUCCESS = 'ADD_RESULT_SUCCESS';
 
- const ROOT_URL = 'http://localhost:3001/api';
+const ROOT_URL = '/api';
 
- export function fetchResults() {
+export function fetchResults() {
      const request = axios.get(`${ROOT_URL}/results`);
-
+     
      return (dispatch) => {
         request.then((data) => {
             dispatch({ type: FETCH_RESULTS, payload: data });
         });
-     };
- }
+    };
+}
 
-  export function fetchResultsByMonth(month, year) {
-     const request = axios.get(`${ROOT_URL}/results/${month}/${year}`);
-
-     return (dispatch) => {
+export function fetchResultsByMonth(month, year) {
+    const request = axios.get(`${ROOT_URL}/results/${month}/${year}`);
+    return (dispatch) => {
         request.then((data) => {
             dispatch({ type: FETCH_RESULTS, payload: data });
         }, (err) => {
             dispatch({ type: FETCH_RESULTS_ERROR });
         });
-     };
- }
+    };
+}
 
- export function addResult(newResult, e, dispatch) {
-     const request = axios.post(`${ROOT_URL}/results/`, newResult);
+export function addResult(newResult, e, dispatch) {
+    const request = axios.post(`${ROOT_URL}/results/`, newResult);
 
-     return (dispatch) => {
+    return (dispatch) => {
         dispatch({ type: ADD_RESULT });
         request.then((data) => {
             dispatch({ type: ADD_RESULT_SUCCESS, data })
         }, (err) => {
             console.log(err);
         });
-     }
- }
+    }
+}

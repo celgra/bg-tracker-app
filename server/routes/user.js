@@ -7,10 +7,8 @@ router.post('/', (req, res) => {
     console.log('posting user')
    let body = _.pick(req.body, ['email', 'password']);
    let user = new User(body);
-   debugger;
    
    user.save().then((user) => {
-       debugger
        return user.generateAuthToken();
    }).then((token) => {
        debugger

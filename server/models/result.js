@@ -10,6 +10,7 @@ const Result = mongoose.model('Result', {
     resultDate: {
         type: Date,
         required: true,
+        default: new Date().getTime()
     },
     editedDate: {
         type: Date,

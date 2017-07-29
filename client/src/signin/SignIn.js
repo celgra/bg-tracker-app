@@ -25,7 +25,7 @@ class SignIn extends Component {
     }
 
     render() {
-        let { authenticate, openModal, logIn } = this.props;
+        let { openModal, logIn } = this.props;
         let { email, password } = this.state;
         return (
             <div className="app flex-row align-items-center">
