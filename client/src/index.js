@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
 import './index.css';
-import RequireAuth  from './components/require_auth';
+import RequireAuth  from './components/requireAuth';
 import App from './App';
 import SignInContainer from './signin/SignInContainer';
 //import registerServiceWorker from './registerServiceWorker';

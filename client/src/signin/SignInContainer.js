@@ -17,8 +17,11 @@ class SignInContainer extends Component {
     }
     
     componentWillMount() {
-        if (this.props.auth) {
+        if (localStorage.getItem('auth')) {
+            this.props.authenticate(true);
             this.props.history.push('/');
+        } else {
+            this.props.authenticate(false);
         }
     };
 

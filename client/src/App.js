@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
 import BloodGlucoseMonthLog from './containers/BloodGlucoseMonthLog';
 
 //import logo from './logo.svg';
@@ -9,11 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <header className="app-header navbar header-fixed">
-          <div>
-            Blood Glucose Tracker App
-          </div>
-        </header>
+        <Header {...this.props} />
         <div className="app-body">
           <main className="main" style={{marginTop: 20}}>
             <div>
