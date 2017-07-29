@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authenticate } from './../actions/actions_authentication';
+import { authenticate, logIn } from './../actions/actions_authentication';
 
 import SignIn from './SignIn';
 import './SignIn.css';
@@ -29,7 +29,6 @@ class SignInContainer extends Component {
     }
 
     openModal() {
-        let { isModelOpen } = this.state;
         this.setState(() => {
             return { 
                 isModelOpen: true
@@ -38,7 +37,6 @@ class SignInContainer extends Component {
     }
 
     closeModal() {
-        let { isModelOpen } = this.state;
         this.setState(() => {
             return { 
                 isModelOpen: false
@@ -59,7 +57,9 @@ class SignInContainer extends Component {
                 <SignIn
                 auth={this.props.auth} 
                 authenticate={() => authenticate(!auth)} 
+                logIn={(e, p) => logIn(e, p)}
                 openModal={() => this.openModal()}/>
+                {logIn('celedgracia@gmail.com','1234567')}
                 {modal}
             </div>
         );
@@ -73,7 +73,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    authenticate
+    authenticate,
+    logIn
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInContainer);

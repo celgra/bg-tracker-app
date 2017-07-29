@@ -7,6 +7,7 @@ class Modal extends Component {
     componentDidMount() {
         this.modalTarget = document.createElement('div');
         this.modalTarget.className = 'modal';
+        this.modalTarget.style.display = 'block';
         document.body.appendChild(this.modalTarget);
         this._render();
     }
