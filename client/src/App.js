@@ -18,7 +18,7 @@ class App extends Component {
           <main className="main" style={{marginTop: 20}}>
             <div>
               <Switch>
-                <Route exact path={`/`} component={BloodGlucoseMonthLog} />
+                <Route exact path="/bg" component={BloodGlucoseMonthLog} />
               </Switch>
             </div>
           </main>

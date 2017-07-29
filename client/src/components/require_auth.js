@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 export default function(ComposedComponent) {
     class Authentication extends Component {
-        static contextTypes = {
-            router: React.PropTypes.object
-        }
 
         componentWillMount() {
-            if (!this.props.authenticated) {
-                this.context.router.push('/');
+            if (!this.props.auth) {
+                this.props.history.push('/signin');
             }
         };
 
         componentWillUpdate(nextProps) {
-            if (!this.nextProps.authenticated) {
-                this.context.router.push('/');
+            if (!nextProps.auth) {
+                this.props.history.push('/sigin');
             }
         }
 
@@ -22,4 +20,12 @@ export default function(ComposedComponent) {
             return <ComposedComponent {...this.props} />
         }
     }
+
+    function mapStateToProps(state) {
+        return {
+            auth: state.auth
+        };
+    }
+
+    return connect(mapStateToProps)(Authentication);
 }

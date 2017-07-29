@@ -6,7 +6,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
 import './index.css';
+import RequireAuth  from './components/require_auth';
 import App from './App';
+import SignInContainer from './signin/SignInContainer';
 //import registerServiceWorker from './registerServiceWorker';
 
 import reducers from './reducers'; 
@@ -20,7 +22,8 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <Switch>
-                    <Route path="/" name="Home" component={App} />
+                    <Route path="/signin" name="SignIn" component={SignInContainer} />
+                    <Route path="/" name="Home" component={RequireAuth(App)} />
                 </Switch>
             </div>
         </BrowserRouter>
