@@ -59,7 +59,6 @@ class SignInContainer extends Component {
                 authenticate={() => authenticate(!auth)} 
                 logIn={(e, p) => logIn(e, p)}
                 openModal={() => this.openModal()}/>
-                {logIn('celedgracia@gmail.com','1234567')}
                 {modal}
             </div>
         );
