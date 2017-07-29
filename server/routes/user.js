@@ -27,8 +27,7 @@ router.get('/me', authenticate, (req, res) => {
 
 router.post('/login', (req, res) => {
     let body = _.pick(req.body, ['email', 'password']);
-    console.log(body);
-
+    
     User.findByCredentials(body.email, body.password).then((user) => {
             user.generateAuthToken().then((token) => {
                 res.header('x-auth', token).send(user);

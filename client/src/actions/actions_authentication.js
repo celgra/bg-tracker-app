@@ -15,7 +15,6 @@ export function logIn(email, password) {
     const request = axios.post('/api/users/login', { email, password });
 
     return (dispatch) => {
-        console.log("dispatching");
         request.then((response) => {
             let token = response.headers['x-auth'];
             console.log("Token", token);
