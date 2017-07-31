@@ -17,6 +17,8 @@
     "lodash": "^4.17.4",
     "mongod": "^2.0.0",
     "mongoose": "^4.11.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.0.3",
     "validator": "^8.0.0"
   }
 }

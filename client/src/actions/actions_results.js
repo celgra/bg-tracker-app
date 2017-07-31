@@ -28,13 +28,17 @@ export function fetchResultsByMonth(month, year) {
     };
 }
 
-export function addResult(newResult, e, dispatch) {
-    const request = axios.post(`${ROOT_URL}/results/`, newResult);
+export function addResult(values, e, dispatch) {
+    let newResult = {
+        bloodGlucoseLevel: values.glucose
+    };
+
+    const request = axios.post(`${ROOT_URL}/results/`, newResult, { headers: { "x-auth": localStorage.getItem('auth') } });
 
     return (dispatch) => {
         dispatch({ type: ADD_RESULT });
-        request.then((data) => {
-            dispatch({ type: ADD_RESULT_SUCCESS, data })
+        request.then((res) => {
+            dispatch({ type: ADD_RESULT_SUCCESS, payload: res.data })
         }, (err) => {
             console.log(err);
         });

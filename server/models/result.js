@@ -18,7 +18,13 @@ const Result = mongoose.model('Result', {
     },
     resultContext: {
         type: String,
-        default: null
+        default: 'Other',
+        enum: {
+            values: ['Fasting','Before Breakfast', 'After Breakfast', 'Before Lunch', 
+                'After Lunch','Before Dinner', 'After Dinner', 'Bedtime', 'Recheck', 
+                'Other'],
+            message: 'enum validator failed for path `{PATH}` with value `{VALUE}`'
+        }
     },
     user: {
         type: ObjectId,

@@ -12,7 +12,8 @@ class Header extends Component {
         debugger;
         let { auth, authenticate, history } = this.props;
         localStorage.removeItem('auth');
-        //authenticate(false);
+        authenticate(false);
+        console.log("signing out");
         history.push('/signin');
     }
 

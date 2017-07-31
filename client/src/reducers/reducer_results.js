@@ -7,7 +7,7 @@ export default function (state = {}, action) {
             return _.mapKeys(action.payload.data.results, '_id');
         case ADD_RESULT_SUCCESS:
             console.log('adding');
-            return { ...state, [action.payload.data._id]: action.payload.data };
+            return { ...state, [action.payload.result._id]: action.payload.result };
         default:
             return state;
     }

@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const _ = require('lodash');
+const { authenticate } = require('./../middleware/authenticate');
 const { ObjectID } = require('mongodb');
 const { Result } = require('./../models/result');
 
@@ -10,12 +12,17 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-    let { bloodGlucoseLevel } = req.body;
+router.post('/', authenticate, (req, res) => {
+    let body = _.pick(req.body, ['bloodGlucoseLevel', 'resultDate', 'resultContext']);
+
+    console.log(req.user);
+    
     let result = new Result(
         { 
-            bloodGlucoseLevel,
-            user: ObjectID()
+            bloodGlucoseLevel: body.bloodGlucoseLevel,
+            resultDate: body.resultDate,
+            resultContext: body.resultContext,
+            user: req.user.id
         }
     );
 

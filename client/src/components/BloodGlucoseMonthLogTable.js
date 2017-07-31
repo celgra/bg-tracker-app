@@ -3,7 +3,7 @@ import moment from 'moment';
 
 const parseDateWithMoment = (date) => {
     return moment(date)
-        .format("dddd, MMMM D YYYY");
+        .format("MMMM D YYYY h:mm A");
 }
 
 const BloodGlucoseMonthTable = (props) => {
@@ -11,16 +11,13 @@ const BloodGlucoseMonthTable = (props) => {
             return (
                 <tr key={result._id}>
                     <td>
-                        {result.user}
+                        {result.bloodGlucoseLevel} mg/dL
                     </td>
                     <td>
                         {parseDateWithMoment(result.submittedDate)}
                     </td>
                     <td>
-                        {result._id}
-                    </td>
-                    <td>
-                        {result.bloodGlucoseLevel}
+                        {result.resultContext}
                     </td>
                 </tr>
             );
@@ -41,10 +38,9 @@ const BloodGlucoseMonthTable = (props) => {
                     </th>
                 </tr>
                 <tr>
-                    <th>Result Id</th>
-                    <th>Result Date</th>
-                    <th>User Id</th>
-                    <th>BG Level</th>
+                    <th>Glucose</th>
+                    <th>Date</th>
+                    <th>Measured</th>
                 </tr>
             </thead>
             <tbody>

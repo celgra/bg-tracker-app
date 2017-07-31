@@ -83,7 +83,8 @@ class BloodGlucoseMonthLog extends Component {
         let { results } = this.props;
         let form = this.state.addingResult ? 
         <BgResultForm 
-        closeForm={() => {this.disableResultForm()}} /> 
+        closeForm={() => {this.disableResultForm()}} 
+        history={this.props.history}/> 
         : null;
 
         return(

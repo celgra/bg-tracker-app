@@ -2,6 +2,7 @@
 /client/node_modules
 
 server/config/config.json
+server/db/seedContexts.json
 /client/scss
 
 .DS_Store

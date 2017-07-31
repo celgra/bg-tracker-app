@@ -25,7 +25,8 @@ class SignInContainer extends Component {
         }
     };
 
-    componentWillUpdate(nextProps) {
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps.auth);
         if (nextProps.auth) {
             this.props.history.push('/');
         }
