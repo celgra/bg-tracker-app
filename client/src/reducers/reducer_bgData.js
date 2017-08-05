@@ -2,7 +2,9 @@ import _ from 'lodash';
 import moment from 'moment';
 import { FETCH_RESULTS, ADD_RESULT_SUCCESS } from './../actions/actions_results';
 
-const { month, year } = moment();
+const date = moment();
+const month = date.month();
+const year = date.year();
 const results = {};
 
 export default function (state = { month, year, results }, action) {
