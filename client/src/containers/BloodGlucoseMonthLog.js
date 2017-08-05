@@ -5,73 +5,51 @@ import moment from 'moment';
 import BloodGlucoseMonthLogTable from './../components/BloodGlucoseMonthLogTable';
 import BgResultForm from './../components/BgResultForm';
 import AddButton from './../components/AddButton';
-import { fetchResultsByMonth, addResult } from './../actions/actions_results';
+import { fetchResultsByMonth, addResult } from './../actions/actions_bgData';
 
 class BloodGlucoseMonthLog extends Component {
     constructor(props) {
         super(props);
 
-        let date = moment();
-        let selectedMonth = date.month() + 1;
-        let selectedYear = date.year();
-
-
         this.state = { 
-            selectedMonth,
-            selectedYear,
             addingResult: false
         };
     }
 
     componentDidMount() {
-        let { selectedMonth, selectedYear } = this.state;
+        let { month, year } = this.props;
 
-        this.props.fetchResultsByMonth(selectedMonth, selectedYear);
+        this.props.fetchResultsByMonth(month, year);
     }
 
     incrementMonth() {
-        let { selectedMonth, selectedYear } = this.state;
+        let { month, year } = this.props;
 
-        if ( (selectedMonth + 1) > 12) {
-            selectedMonth = 1
-            selectedYear++;
+        if ( (month + 1) > 12) {
+            month = 1
+            year++;
         } else {
-            selectedMonth++;
+            month++;
         }
 
-        this.setState(() => {
-             return { 
-                 selectedMonth, 
-                 selectedYear 
-                } 
-            });
-
-        this.props.fetchResultsByMonth(selectedMonth, selectedYear);
+        this.props.fetchResultsByMonth(month, year);
     }
 
     decrementMonth() {
-        let { selectedMonth, selectedYear } = this.state;
+        let { month, year } = this.props;
 
-        if ( (selectedMonth - 1) < 1) {
-            selectedMonth = 12
-            selectedYear--;
+        if ( (month - 1) < 1) {
+            month = 11
+            year--;
         } else {
-            selectedMonth--;
+            month--;
         }
 
-        this.setState(() => {
-             return { 
-                 selectedMonth, 
-                 selectedYear 
-                } 
-            });
-
-        this.props.fetchResultsByMonth(selectedMonth, selectedYear);
+        this.props.fetchResultsByMonth(month, year);
     }
 
     enableResultForm() {
         this.setState(() => { return { addingResult: true } });
-        console.log(this.state.addingResult);
     }
 
     disableResultForm() {
@@ -79,8 +57,8 @@ class BloodGlucoseMonthLog extends Component {
     }
 
     render() {
-        let { selectedMonth, selectedYear } = this.state;
-        let { results } = this.props;
+        let { month, year, results } = this.props;
+
         let form = this.state.addingResult ? 
         <BgResultForm 
         closeForm={() => {this.disableResultForm()}} 
@@ -96,8 +74,8 @@ class BloodGlucoseMonthLog extends Component {
                 </AddButton>
                 {form}
                 <BloodGlucoseMonthLogTable
-                month={selectedMonth} 
-                year={selectedYear}
+                month={month} 
+                year={year}
                 results={results}
                 incrementMonth={() => this.incrementMonth()}
                 decrementMonth={() => this.decrementMonth()} />
@@ -108,7 +86,7 @@ class BloodGlucoseMonthLog extends Component {
 }
 
 function mapStateToProps(state) {
-    let { month, year } = state;
+    let { month, year } = state.bgData;
     let results = _.values(state.bgData.results);
 
     return { month, year, results };

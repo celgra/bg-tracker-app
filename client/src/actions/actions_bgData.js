@@ -20,8 +20,9 @@ export function fetchResults() {
 export function fetchResultsByMonth(month, year) {
     const request = axios.get(`${ROOT_URL}/results/${month}/${year}`);
     return (dispatch) => {
-        request.then((data) => {
-            dispatch({ type: FETCH_RESULTS, payload: data });
+        request.then((request) => {
+            let { data } = request;
+            dispatch({ type: FETCH_RESULTS, payload: { month, year, data } });
         }, (err) => {
             dispatch({ type: FETCH_RESULTS_ERROR });
         });

@@ -14,7 +14,7 @@ const BloodGlucoseMonthTable = (props) => {
                         {result.bloodGlucoseLevel} mg/dL
                     </td>
                     <td>
-                        {parseDateWithMoment(result.submittedDate)}
+                        {parseDateWithMoment(result.resultDate)}
                     </td>
                     <td>
                         {result.resultContext}

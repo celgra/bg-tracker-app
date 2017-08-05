@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import './index.css';
-import withfAuth  from './components/wihAuth';
+import withAuth  from './components/withAuth';
 import App from './App';
 import SignInContainer from './signin/SignInContainer';
 //import registerServiceWorker from './registerServiceWorker';

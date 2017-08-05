@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { addResult } from './../actions/actions_results';
+import { addResult } from './../actions/actions_bgData';
 
 import './BgResultForm.css';
 
