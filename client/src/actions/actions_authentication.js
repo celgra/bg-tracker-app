@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const CHANGE_AUTH = 'CHANGE_AUTH';
+export const AUTH_ERROR = 'AUTH_ERROR';
 
 export function authenticate(isLoggedIn) {
     return (dispatch) => {
@@ -26,6 +27,9 @@ export function logIn(email, password) {
             });
         }, (err) => {
             console.log(err);
+            dispatch({ 
+                type: AUTH_ERROR
+             });
         });
     };
 }

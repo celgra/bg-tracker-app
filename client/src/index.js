@@ -24,6 +24,7 @@ ReactDOM.render(
             <div>
                 <Switch>
                     <Route path="/signin" name="SignIn" component={SignInContainer} />
+                    <Route path="/signup" name="SignUp" component={App} />
                     <Route path="/" name="Home" component={withAuth(App)} />
                 </Switch>
             </div>

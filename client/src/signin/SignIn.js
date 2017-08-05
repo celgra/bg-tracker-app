@@ -25,8 +25,13 @@ class SignIn extends Component {
     }
 
     render() {
-        let { openModal, logIn } = this.props;
+        let { openModal, logIn, error } = this.props;
         let { email, password } = this.state;
+
+        let warning = error ? "Username or password invalid" : "";
+        let formGroupHasDanger = error ? "input-group has-danger" : "input-group";
+        let formDangerCss = error ? "form-control form-control-danger" : "form-control";
+
         return (
             <div className="app flex-row align-items-center">
                 <div className="container">
@@ -39,22 +44,25 @@ class SignIn extends Component {
                                         <p className="text-muted">
                                             Sign In to your account
                                         </p>
-                                        <div className="input-group mb-1">
+                                        <p className="text-danger">
+                                            {warning}
+                                        </p>
+                                        <div className={`${formGroupHasDanger} mb-1`}>
                                             <span className="input-group-addon">
                                                 <i className="icon-user"></i>
                                             </span>
                                             <input type="text" 
-                                            className="form-control" 
+                                            className={formDangerCss} 
                                             placeholder="Email" 
                                             value={email}
                                             onChange={(e) => this.handleEmailChange(e)}/>
                                         </div>
-                                        <div className="input-group mb-2">
+                                        <div className={`${formGroupHasDanger} mb-2`}>
                                             <span className="input-group-addon">
                                                 <i className="icon-lock"></i>
                                             </span>
                                             <input type="password" 
-                                            className="form-control" 
+                                            className={formDangerCss} 
                                             placeholder="Password" 
                                             value={password}
                                             onChange={(e) => {this.handlePasswordChange(e)}}/>

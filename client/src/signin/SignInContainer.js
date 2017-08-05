@@ -49,7 +49,8 @@ class SignInContainer extends Component {
     }
 
     render() {
-        let { authenticate, auth, logIn } = this.props;
+        let { authenticate, auth, error, logIn } = this.props;
+
         let modal = this.state.isModelOpen ? 
             <Modal>
                 <RegisterModal
@@ -59,7 +60,8 @@ class SignInContainer extends Component {
         return (
             <div>
                 <SignIn
-                auth={this.props.auth} 
+                auth={auth}
+                error={error} 
                 authenticate={() => authenticate(!auth)} 
                 logIn={(e, p) => logIn(e, p)}
                 openModal={() => this.openModal()}/>
@@ -70,8 +72,11 @@ class SignInContainer extends Component {
 }
 
 function mapStateToProps(state) {
+    let { auth, error } = state.auth;
+
     return {
-        auth: state.auth
+        auth,
+        error
     };
 }
 
