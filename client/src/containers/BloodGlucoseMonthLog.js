@@ -108,9 +108,10 @@ class BloodGlucoseMonthLog extends Component {
 }
 
 function mapStateToProps(state) {
-    let results = _.values(state.results);
+    let { month, year } = state;
+    let results = _.values(state.bgData.results);
 
-    return { results };
+    return { month, year, results };
 }
 
 const mapDispatchToProps = { 

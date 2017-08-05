@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import ResultsReducer from './reducer_results';
+import BGReducer from './reducer_bgData';
 import AuthReducer from './reducer_authentication';
 
 const rootReducer = combineReducers({
-    results: ResultsReducer,
+    bgData: BGReducer,
     auth: AuthReducer,
     form: formReducer
 });

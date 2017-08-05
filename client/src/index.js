@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import './index.css';
-import RequireAuth  from './components/requireAuth';
+import withfAuth  from './components/wihAuth';
 import App from './App';
 import SignInContainer from './signin/SignInContainer';
 //import registerServiceWorker from './registerServiceWorker';
@@ -24,7 +24,7 @@ ReactDOM.render(
             <div>
                 <Switch>
                     <Route path="/signin" name="SignIn" component={SignInContainer} />
-                    <Route path="/" name="Home" component={RequireAuth(App)} />
+                    <Route path="/" name="Home" component={withAuth(App)} />
                 </Switch>
             </div>
         </BrowserRouter>
