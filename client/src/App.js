@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
-import BloodGlucoseMonthLog from './containers/BloodGlucoseMonthLog';
+import BloodGlucoseMonthLog from './dashboard/BloodGlucoseMonthLog';
 
 //import logo from './logo.svg';
 //import './App.css';

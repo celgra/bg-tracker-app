@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BloodGlucoseMonthLogTable from './../components/BloodGlucoseMonthLogTable';
-import BgResultForm from './../components/BgResultForm';
-import AddButton from './../components/AddButton';
+import BloodGlucoseMonthLogTable from './BloodGlucoseMonthLogTable';
+import BgResultForm from './BgResultForm';
+import AddButton from './AddButton';
 import { fetchResultsByMonth, addResult } from './../actions/actions_bgData';
 
 class BloodGlucoseMonthLog extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = { 
             addingResult: false
