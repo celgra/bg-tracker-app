@@ -17,7 +17,7 @@ class Header extends Component {
     render() {
         return (
             <header className="app-header navbar header-fixed">
-                <div className="navbar-brand">
+                <div className="navbar-brand ">
                     Blood Glucose Tracker
                 </div>
                 <NavBar signOut={() => this.signOut()}/>
