@@ -6,9 +6,6 @@ import { addResult } from './../actions/actions_bgData';
 import './BgResultForm.css';
 
 class BgResultForm extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     renderField(field) {
         const { meta: { touched, error } } = field;
@@ -26,7 +23,7 @@ class BgResultForm extends Component {
                     {touched ? error : ''}
                 </div>
             </div>
-        );
+        )
     }
 
     onSubmit(values) {

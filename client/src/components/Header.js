@@ -4,13 +4,10 @@ import { connect } from 'react-redux';
 import { authenticate } from './../actions/actions_authentication';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     signOut() {
         debugger;
-        let { auth, authenticate, history } = this.props;
+        let { authenticate, history } = this.props;
         localStorage.removeItem('auth');
         authenticate(false);
         console.log("signing out");

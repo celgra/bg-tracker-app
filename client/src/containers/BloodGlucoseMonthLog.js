@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import BloodGlucoseMonthLogTable from './../components/BloodGlucoseMonthLogTable';
 import BgResultForm from './../components/BgResultForm';
 import AddButton from './../components/AddButton';

@@ -25,7 +25,7 @@ class SignIn extends Component {
     }
 
     render() {
-        let { openModal, logIn, error } = this.props;
+        let { signUp, logIn, error } = this.props;
         let { email, password } = this.state;
 
         let warning = error ? "Username or password invalid" : "";
@@ -92,7 +92,7 @@ class SignIn extends Component {
                                             </p>
                                             <button type="button" 
                                             className="btn btn-primary active mt-1"
-                                            onClick={() => openModal()}>
+                                            onClick={() => signUp()}>
                                                 Register Now!
                                             </button>
                                         </div>

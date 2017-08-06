@@ -4,8 +4,6 @@ import { authenticate, logIn } from './../actions/actions_authentication';
 
 import SignIn from './SignIn';
 import './SignIn.css';
-import Modal from './../components/Modal';
-import RegisterModal from './RegisterModal';
 
 class SignInContainer extends Component {
     constructor() {
@@ -16,30 +14,12 @@ class SignInContainer extends Component {
         };
     }
 
-    openModal() {
-        this.setState(() => {
-            return { 
-                isModelOpen: true
-            };
-        });
-    }
-
-    closeModal() {
-        this.setState(() => {
-            return { 
-                isModelOpen: false
-            };
-        });
+    signUp() {
+        this.props.history.push('/signup');
     }
 
     render() {
         let { authenticate, error, logIn } = this.props;
-
-        let modal = this.state.isModelOpen ? 
-            <Modal>
-                <RegisterModal
-                closeModal={() => this.closeModal()} />
-            </Modal> : null;
 
         return (
             <div>
@@ -47,8 +27,7 @@ class SignInContainer extends Component {
                 error={error} 
                 authenticate={() => authenticate(true)} 
                 logIn={(e, p) => logIn(e, p)}
-                openModal={() => this.openModal()}/>
-                {modal}
+                signUp={() => this.signUp()}/>
             </div>
         );
     }

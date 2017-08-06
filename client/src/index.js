@@ -11,6 +11,7 @@ import withAuth  from './components/withAuth';
 import withNoAuth from './components/withNoAuth';
 import App from './App';
 import SignInContainer from './signin/SignInContainer';
+import SignUpContainer from './signup/SignUpContainer';
 //import registerServiceWorker from './registerServiceWorker';
 
 import reducers from './reducers'; 
@@ -25,7 +26,7 @@ ReactDOM.render(
             <div>
                 <Switch>
                     <Route path="/signin" name="SignIn" component={withNoAuth(SignInContainer)} />
-                    <Route path="/signup" name="SignUp" component={withNoAuth(App)} />
+                    <Route path="/signup" name="SignUp" component={withNoAuth(SignUpContainer)} />
                     <Route path="/" name="Home" component={withAuth(App)} />
                 </Switch>
             </div>
