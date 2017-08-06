@@ -18,7 +18,7 @@ class Header extends Component {
         return (
             <header className="app-header navbar header-fixed">
                 <div className="navbar-brand">
-                    Blood Glucose Tracker App
+                    Blood Glucose Tracker
                 </div>
                 <NavBar signOut={() => this.signOut()}/>
             </header>
