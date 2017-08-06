@@ -15,22 +15,6 @@ class SignInContainer extends Component {
             isModelOpen: false
         };
     }
-    
-    componentWillMount() {
-        if (localStorage.getItem('auth')) {
-            this.props.authenticate(true);
-            this.props.history.push('/');
-        } else {
-            this.props.authenticate(false);
-        }
-    };
-
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps.auth);
-        if (nextProps.auth) {
-            this.props.history.push('/');
-        }
-    }
 
     openModal() {
         this.setState(() => {
@@ -49,7 +33,7 @@ class SignInContainer extends Component {
     }
 
     render() {
-        let { authenticate, auth, error, logIn } = this.props;
+        let { authenticate, error, logIn } = this.props;
 
         let modal = this.state.isModelOpen ? 
             <Modal>
@@ -60,9 +44,8 @@ class SignInContainer extends Component {
         return (
             <div>
                 <SignIn
-                auth={auth}
                 error={error} 
-                authenticate={() => authenticate(!auth)} 
+                authenticate={() => authenticate(true)} 
                 logIn={(e, p) => logIn(e, p)}
                 openModal={() => this.openModal()}/>
                 {modal}
@@ -72,10 +55,9 @@ class SignInContainer extends Component {
 }
 
 function mapStateToProps(state) {
-    let { auth, error } = state.auth;
+    let { error } = state.auth;
 
     return {
-        auth,
         error
     };
 }

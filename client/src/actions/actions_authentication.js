@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'; 
 
 export const CHANGE_AUTH = 'CHANGE_AUTH';
 export const AUTH_ERROR = 'AUTH_ERROR';

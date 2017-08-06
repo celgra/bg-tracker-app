@@ -10,6 +10,8 @@
   "scripts": {
     "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "flow": "flow",
+    "flow-typed": "flow-typed install",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
@@ -26,5 +28,9 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^7.0.3",
     "validator": "^8.0.0"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.52.0",
+    "flow-typed": "^2.1.5"
   }
 }

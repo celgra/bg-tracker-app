@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 import withAuth  from './components/withAuth';
+import withNoAuth from './components/withNoAuth';
 import App from './App';
 import SignInContainer from './signin/SignInContainer';
 //import registerServiceWorker from './registerServiceWorker';
@@ -23,8 +24,8 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <Switch>
-                    <Route path="/signin" name="SignIn" component={SignInContainer} />
-                    <Route path="/signup" name="SignUp" component={App} />
+                    <Route path="/signin" name="SignIn" component={withNoAuth(SignInContainer)} />
+                    <Route path="/signup" name="SignUp" component={withNoAuth(App)} />
                     <Route path="/" name="Home" component={withAuth(App)} />
                 </Switch>
             </div>

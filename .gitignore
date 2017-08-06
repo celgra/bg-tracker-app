@@ -1,8 +1,12 @@
 /node_modules
 /client/node_modules
 
+/flow-typed
+
 server/config/config.json
 server/db/seedContexts.json
 /client/scss
 
+settings.json
 .DS_Store
+.flowconfig
