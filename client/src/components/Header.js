@@ -6,7 +6,6 @@ import { authenticate } from './../actions/actions_authentication';
 class Header extends Component {
 
     signOut() {
-        debugger;
         let { authenticate, history } = this.props;
         localStorage.removeItem('auth');
         authenticate(false);
@@ -20,7 +19,7 @@ class Header extends Component {
                 <div className="navbar-brand ">
                     Blood Glucose Tracker
                 </div>
-                <NavBar signOut={() => this.signOut()}/>
+                <NavBar signOut={() => this.signOut()} />
             </header>
         );
     }

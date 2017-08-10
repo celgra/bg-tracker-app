@@ -1,3 +1,4 @@
+//@flow
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -10,7 +11,7 @@ class BloodGlucoseMonthLog extends Component {
     constructor() {
         super();
 
-        this.state = { 
+        this.state = {
             addingResult: false
         };
     }
@@ -58,10 +59,10 @@ class BloodGlucoseMonthLog extends Component {
     render() {
         let { month, year, results } = this.props;
 
-        let form = this.state.addingResult ? 
-        <BgResultForm 
-        closeForm={() => {this.disableResultForm()}} 
-        history={this.props.history}/> 
+        let form = this.state.addingResult ?
+        <BgResultForm
+        closeForm={() => {this.disableResultForm()}}
+        history={this.props.history}/>
         : null;
 
         return(
@@ -73,7 +74,7 @@ class BloodGlucoseMonthLog extends Component {
                 </AddButton>
                 {form}
                 <BloodGlucoseMonthLogTable
-                month={month} 
+                month={month}
                 year={year}
                 results={results}
                 incrementMonth={() => this.incrementMonth()}
@@ -91,9 +92,9 @@ function mapStateToProps(state) {
     return { month, year, results };
 }
 
-const mapDispatchToProps = { 
-    fetchResultsByMonth, 
-    addResult 
+const mapDispatchToProps = {
+    fetchResultsByMonth,
+    addResult
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BloodGlucoseMonthLog);

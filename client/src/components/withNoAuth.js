@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authenticate } from './../actions/actions_authentication';
 
@@ -9,19 +10,14 @@ export default function (ComposedComponent) {
             if (localStorage.getItem('auth')) {
                 this.props.authenticate(true);
                 this.props.history.push('/');
-            } else {
-                this.props.authenticate(false);
             }
         };
 
-        componentWillReceiveProps(nextProps) {
-            console.log(nextProps.auth);
-            if (nextProps.auth) {
-                this.props.history.push('/');
-            }
-        }
-
         render() {
+            if (this.props.auth === true) {
+                return <Redirect to="/" />;
+            }
+            
             return <ComposedComponent {...this.props} />
         }
     }

@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 export default function(ComposedComponent) {
     class Authenticated extends Component {
 
-        componentWillMount() {
-            if (!this.props.auth) {
-                this.props.history.push('/signin');
-            }
-        };
-
-        componentWillUpdate(nextProps) {
-            if (!nextProps.auth) {
-                this.props.history.push('/sigin');
-            }
-        }
-
         render() {
+            if (this.props.auth === true) {
             return <ComposedComponent {...this.props} />
+            }
+            return <Redirect to="/signin" />
         }
     }
 
     function mapStateToProps(state) {
+        let { auth } = state.auth;
+        
         return {
-            auth: state.auth
+            auth
         };
     }
 
