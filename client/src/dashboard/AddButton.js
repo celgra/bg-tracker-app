@@ -1,8 +1,14 @@
+//@flow
 import React from 'react';
 
 import './AddButton.css';
 
-const AddButton = (props) => {
+type Props = { 
+    isAddingResult: boolean,
+     addResult: Function 
+    };
+
+const AddButton = (props: Props) => {
     if(props.isAddingResult){
         return null;
     } else {

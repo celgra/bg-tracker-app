@@ -1,13 +1,24 @@
+//@flow
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { addResult } from './../actions/actions_bgData';
 
-import './BgResultForm.css';
+import './BgResultForm.css'
 
-class BgResultForm extends Component {
+import type { FieldProps } from 'redux-form';
 
-    renderField(field) {
+type Values = { glucose: number };
+type Props = { 
+    addResult: Function, 
+    closeForm: Function, 
+    handleSubmit: Function,
+    history: any
+};
+
+class BgResultForm extends Component<any, Props, any> {
+
+    renderField(field: FieldProps) {
         const { meta: { touched, error } } = field;
         const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
@@ -26,7 +37,7 @@ class BgResultForm extends Component {
         )
     }
 
-    onSubmit(values) {
+    onSubmit(values: Values) {
         this.props.addResult(values);
         this.props.history.push('/');
     }
@@ -67,7 +78,7 @@ class BgResultForm extends Component {
     };
 }
 
-function validate(values) {
+function validate(values: Values) {
     const errors = {};
 
     if (!values.glucose) {

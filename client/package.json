@@ -4,7 +4,7 @@
   "private": true,
   "proxy": {
     "/api": {
-    "target": "http://localhost:3001"
+      "target": "http://localhost:3001"
     }
   },
   "dependencies": {
@@ -18,15 +18,19 @@
     "react-router-dom": "^4.1.1",
     "react-scripts": "1.0.10",
     "redux": "^3.7.2",
+    "redux-form": "^7.0.3",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow-typed": "flow-typed install"
   },
   "devDependencies": {
+    "flow-bin": "^0.52.0",
+    "flow-typed": "^2.1.5",
     "redux-devtools": "^3.4.0"
   }
 }

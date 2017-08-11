@@ -7,8 +7,9 @@ export default function(ComposedComponent) {
 
         render() {
             if (this.props.auth === true) {
-            return <ComposedComponent {...this.props} />
+                return <ComposedComponent {...this.props} />
             }
+            
             return <Redirect to="/signin" />
         }
     }
