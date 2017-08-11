@@ -19,7 +19,7 @@ type Props = {
 
 class BgResultForm extends Component<any, Props, any> {
 
-    renderField(field: FieldProps) {
+    renderField(field: any) {
         const { meta: { touched, error } } = field;
         const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 

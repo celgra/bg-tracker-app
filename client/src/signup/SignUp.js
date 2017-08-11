@@ -1,13 +1,18 @@
+//@flow
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { signUp } from './../actions/actions_authentication';
 
-class SignUp extends Component {
+import type { FieldProps } from 'redux-form'
 
-        renderField(field: FieldProps) {
-        const { meta: { touched, error } } = field;
-        const className = `form-control ${touched && error ? 'has-danger' : ''}`;
+
+class SignUp extends Component {
+        
+    renderField(field) {
+        const { meta: { touched, error } }: FieldProps = field;
+        //let err = this.props.error;
+        const className = `form-control ${ touched && error ? 'has-danger' : ''}`;
 
         return (
             <div className={` form-group mb-1`}>
@@ -29,7 +34,7 @@ class SignUp extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 
     onSubmit(values) {
@@ -66,7 +71,7 @@ class SignUp extends Component {
                                             name="password"
                                             label="Password"
                                             type="password"
-                                            placeholder="Enter your desired password..." 
+                                            placeholder="Enter your desired password..."
                                             component={this.renderField} />
                                             <button
                                             className="btn btn-primary px-2"
@@ -103,7 +108,8 @@ function mapStateToProps(state) {
     let { auth } = state.auth;
 
     return {
-        auth
+        auth,
+        error: state.error
     };
 }
 
