@@ -10,4 +10,5 @@ server/db/seedContexts.json
 settings.json
 .DS_Store
 .flowconfig
+/flow-typed
 .eslintrc.json
