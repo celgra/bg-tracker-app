@@ -9,6 +9,7 @@ import './BgResultForm.css'
 import type { FieldProps } from 'redux-form';
 
 type Values = { glucose: number };
+
 type Props = { 
     addResult: Function, 
     closeForm: Function, 
@@ -99,4 +100,4 @@ const mapDispatchToProps = {
 export default BgResultForm = reduxForm({
     validate,
     form: 'BgResultForm'
-})( connect(null, mapDispatchToProps )(BgResultForm));
+})( connect(null, mapDispatchToProps)(BgResultForm) );

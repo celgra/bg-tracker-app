@@ -13,14 +13,20 @@ export function authenticate(isLoggedIn: boolean) {
     };
 }
 
+function extractAndSetToken(response) {
+    let token = response.headers['x-auth'];
+    
+    console.log("Token ", token);
+
+    localStorage.setItem('auth', token);
+}
+
 export function logIn(email: string, password: string) {
     const request = axios.post('/api/users/login', { email, password });
+
     return (dispatch: Function) => {
         request.then((response) => {
-            let token = response.headers['x-auth'];
-            console.log("Token ", token);
-
-            localStorage.setItem('auth', token);
+            extractAndSetToken(response);
 
             dispatch({
                 type: CHANGE_AUTH,
@@ -33,4 +39,23 @@ export function logIn(email: string, password: string) {
              });
         });
     };
+}
+
+export function signUp(email: string, password: string) {
+    const request = axios.post('api/users', { email, password });
+
+    return (dispatch: Function) => {
+        request.then((response) => {
+            extractAndSetToken(response);
+
+            dispatch({
+                type: CHANGE_AUTH,
+                payload: true
+            });
+        }, (err) => {
+            dispatch({
+                type: AUTH_ERROR
+            });
+        });
+    }
 }

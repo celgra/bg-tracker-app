@@ -1,8 +1,45 @@
 import React, { Component } from 'react';
-//import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { signUp } from './../actions/actions_authentication';
 
-export default class SignUp extends Component {
+class SignUp extends Component {
+
+        renderField(field: FieldProps) {
+        const { meta: { touched, error } } = field;
+        const className = `form-control ${touched && error ? 'has-danger' : ''}`;
+
+        return (
+            <div className={` form-group mb-1`}>
+                <label>
+                    {field.label}
+                </label>
+                <div className="input-group">
+                    <span className="input-group-addon">
+                        <i className="icon-user"></i>
+                    </span>
+                    <input 
+                    type={field.type}
+                    className={className}
+                    placeholder={field.placeholder}
+                    {...field.input}
+                    />
+                    <div className="text-help">
+                        {touched ? error : ''}
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    onSubmit(values) {
+        let { email, password } = values;
+        this.props.signUp(email, password);
+    }
+
     render() {
+        let { handleSubmit } = this.props;
+
         return (
             <div className="app flex-row align-items-center">
                 <div className="container">
@@ -18,32 +55,24 @@ export default class SignUp extends Component {
                                         <p className="text-danger">
                                             {/*warning*/}
                                         </p>
-                                        <form>
-                                            <div className={` mb-1`}>
-                                                <span className="input-group-addon">
-                                                    <i className="icon-user"></i>
-                                                </span>
-                                                <input type="text"
-                                                    className=""
-                                                    placeholder="Email"
-                                                />
-                                            </div>
-                                            <div className={` mb-2`}>
-                                                <span className="input-group-addon">
-                                                    <i className="icon-lock"></i>
-                                                </span>
-                                                <input type="password"
-                                                    className=""
-                                                    placeholder="Password" />
-                                            </div>
-                                            <div className="row">
-                                                <div className="col-6">
-                                                    <button type="button"
-                                                        className="btn btn-primary px-2">
-                                                        Sign Up
-                                                    </button>
-                                                </div>
-                                            </div>
+                                        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                                            <Field
+                                            name="email"
+                                            label="Email"
+                                            type="text"
+                                            placeholder="Enter your email address..."
+                                            component={this.renderField}/>
+                                            <Field
+                                            name="password"
+                                            label="Password"
+                                            type="password"
+                                            placeholder="Enter your desired password..." 
+                                            component={this.renderField} />
+                                            <button
+                                            className="btn btn-primary px-2"
+                                            type="submit">
+                                                Sign Up
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
@@ -55,3 +84,34 @@ export default class SignUp extends Component {
         );
     }
 }
+
+function validate(values) {
+    const errors = {};
+
+    if (!values.glucose) {
+        errors.glucose = "Enter a Glucose reading.";
+    }
+
+    if (values.glucose < 1) {
+        errors.glucose = "Glucose reading must be greater than zero.";
+    }
+
+    return errors;
+}
+
+function mapStateToProps(state) {
+    let { auth } = state.auth;
+
+    return {
+        auth
+    };
+}
+
+const mapDispatchToProps = {
+    signUp
+};
+
+export default SignUp = reduxForm({
+    validate,
+    form:'SignUpForm'
+})( connect(mapStateToProps, mapDispatchToProps)(SignUp) );

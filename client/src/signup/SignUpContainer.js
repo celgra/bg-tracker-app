@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 
 import SignUp from './SignUp';
 
-export default class SignUpContainer extends Component {
+class SignUpContainer extends Component {
     render() {
         return (
-            <SignUp />
+            <div>
+                <SignUp />
+            </div>
         );
     }
 }
+
+export default SignUpContainer;
