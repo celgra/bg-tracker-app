@@ -35,7 +35,8 @@ export function addResult(values: ResultValues, e: Event): ThunkAction {
     return (dispatch) => {
         dispatch({ type: ADD_RESULT });
         request.then((res) => {
-            dispatch({ type: ADD_RESULT_SUCCESS, payload: res.data })
+            const { data: { result } } = res;
+            dispatch({ type: ADD_RESULT_SUCCESS, payload: result })
         }, (err) => {
             console.log(err);
         });
