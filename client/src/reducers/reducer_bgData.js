@@ -14,7 +14,7 @@ export default function (state = initState, action) {
         case FETCH_RESULTS:
             return {
                 ...state, 
-                results: _.mapKeys(action.payload.data.results, '_id'),
+                results: _.mapKeys(action.payload.results, '_id'),
                 month: action.payload.month,
                 year: action.payload.year
             };
@@ -24,7 +24,7 @@ export default function (state = initState, action) {
                 ...state, 
                 results: { 
                     ...results, 
-                    [action.payload.result._id]: action.payload.result 
+                    [action.payload.result._id]: action.payload 
                 } 
             };
         default:

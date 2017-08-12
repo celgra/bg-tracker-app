@@ -6,21 +6,21 @@ import { addResult } from './../actions/actions_bgData';
 
 import './BgResultForm.css'
 
-import type { FieldProps } from 'redux-form';
+import type { FieldProps, FormProps } from 'redux-form';
 
 type Values = { glucose: number };
 
 type Props = { 
     addResult: Function, 
     closeForm: Function, 
-    handleSubmit: Function,
     history: any
-};
+} & FormProps;
 
-class BgResultForm extends Component<any, Props, any> {
+class BgResultForm extends Component {
+    props: Props
 
-    renderField(field: any) {
-        const { meta: { touched, error } } = field;
+    renderField(field) {
+        const { meta: { touched, error } }: FieldProps = field;
         const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
         return (

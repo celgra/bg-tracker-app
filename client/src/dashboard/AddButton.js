@@ -5,8 +5,8 @@ import './AddButton.css';
 
 type Props = { 
     isAddingResult: boolean,
-     addResult: Function 
-    };
+    addResult: Function 
+};
 
 const AddButton = (props: Props) => {
     if(props.isAddingResult){

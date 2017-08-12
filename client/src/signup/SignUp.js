@@ -4,13 +4,27 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { signUp } from './../actions/actions_authentication';
 
-import type { FieldProps } from 'redux-form'
+import type { FormProps, FieldProps } from 'redux-form'
 
+type Values = { email:string, password: string };
+
+type RenderFieldProps = { 
+    label: string,
+    type: string, 
+    placeholder: string 
+} & FieldProps;
+
+type Props = { 
+    signUp(email: string, password: string): Function 
+} & FormProps;
+
+type SignUpState = { auth: { auth: boolean }, error: {} | null };
 
 class SignUp extends Component {
-        
-    renderField(field) {
-        const { meta: { touched, error } }: FieldProps = field;
+    props: Props;
+
+    renderField(field: RenderFieldProps) {
+        const { meta: { touched, error } }: RenderFieldProps = field;
         //let err = this.props.error;
         const className = `form-control ${ touched && error ? 'has-danger' : ''}`;
 
@@ -37,7 +51,7 @@ class SignUp extends Component {
         );
     }
 
-    onSubmit(values) {
+    onSubmit(values: Values): void {
         let { email, password } = values;
         this.props.signUp(email, password);
     }
@@ -90,7 +104,7 @@ class SignUp extends Component {
     }
 }
 
-function validate(values) {
+function validate(values: { glucose: number }) {
     const errors = {};
 
     if (!values.glucose) {
@@ -104,7 +118,7 @@ function validate(values) {
     return errors;
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: SignUpState): { auth: boolean, error: {} | null } {
     let { auth } = state.auth;
 
     return {

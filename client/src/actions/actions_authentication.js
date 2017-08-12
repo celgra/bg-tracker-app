@@ -1,30 +1,30 @@
 //@flow
-import axios from 'axios'; 
+import axios from 'axios';
+
+import type { ThunkAction } from './action_flowtypes';
 
 export const CHANGE_AUTH = 'CHANGE_AUTH';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
-export function authenticate(isLoggedIn: boolean) {
-    return (dispatch: Function) => {
-        dispatch({ 
+export function authenticate(isLoggedIn: boolean): ThunkAction {
+    return (dispatch) => {
+        dispatch({
             type: CHANGE_AUTH,
             payload: isLoggedIn
         });
     };
 }
 
-function extractAndSetToken(response) {
-    let token = response.headers['x-auth'];
-    
-    console.log("Token ", token);
+function extractAndSetToken(response:{ headers: { 'x-auth': string} }) {
+    let token: string = response.headers['x-auth'];
 
     localStorage.setItem('auth', token);
 }
 
-export function logIn(email: string, password: string) {
+export function logIn(email: string, password: string): ThunkAction {
     const request = axios.post('/api/users/login', { email, password });
 
-    return (dispatch: Function) => {
+    return (dispatch) => {
         request.then((response) => {
             extractAndSetToken(response);
 
@@ -34,17 +34,17 @@ export function logIn(email: string, password: string) {
             });
         }, (err) => {
             console.log(err);
-            dispatch({ 
+            dispatch({
                 type: AUTH_ERROR
              });
         });
     };
 }
 
-export function signUp(email: string, password: string) {
+export function signUp(email: string, password: string): ThunkAction {
     const request = axios.post('api/users', { email, password });
 
-    return (dispatch: Function) => {
+    return (dispatch: Dispatch) => {
         request.then((response) => {
             extractAndSetToken(response);
 
