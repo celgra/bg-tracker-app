@@ -24,7 +24,7 @@ export default function (state = initState, action) {
                 ...state, 
                 results: { 
                     ...results, 
-                    [action.payload.result._id]: action.payload 
+                    [action.payload._id]: action.payload 
                 } 
             };
         default:
