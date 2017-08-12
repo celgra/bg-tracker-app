@@ -23,7 +23,7 @@ export default function (state = initState, action) {
             return { 
                 ...state, 
                 results: { 
-                    ...results, 
+                    ...state.results, 
                     [action.payload._id]: action.payload 
                 } 
             };
