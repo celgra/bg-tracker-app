@@ -4,7 +4,7 @@
   * ### Back-End: 
     * Node.js
     * Express.js 
-    * Mongoose ORM,
+    * Mongoose ORM
   * ### Front-End:
     * React.js
     * React-Redux
