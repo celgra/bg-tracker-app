@@ -1,5 +1,16 @@
 # Blood Glucose Tracker App
 
+## Technologies: 
+  * ### Back-End: 
+    * Node.js
+    * Express.js 
+    * Mongoose ORM
+  * ### Front-End:
+    * React.js
+    * React-Redux
+    * Redux-Thunk
+    * Flow Static Typing
+
 A personal project to create a blood glucose logbook app for diabetics or anyone else interested in tracking bg data.
 
 I was recently diagnosed with Type 2 Diabetes. I quickly became as informed as I could and began to track my glucose levels diligently.
