@@ -4,8 +4,8 @@ const { authenticate } = require('./../middleware/authenticate');
 const { ObjectID } = require('mongodb');
 const { Result } = require('./../models/result');
 
-router.get('/', (req, res) => {
-    Result.find().then((results) => {
+router.get('/', authenticate, (req, res) => {
+    Result.find({ user: req.user.id }).then((results) => {
         res.send({ results });
     }, (e) => {
         res.status(400).send(e);
@@ -14,8 +14,6 @@ router.get('/', (req, res) => {
 
 router.post('/', authenticate, (req, res) => {
     let body = _.pick(req.body, ['bloodGlucoseLevel', 'resultDate', 'resultContext']);
-
-    console.log(req.user);
     
     let result = new Result(
         { 
@@ -34,7 +32,7 @@ router.post('/', authenticate, (req, res) => {
 
 });
 
-router.get('/:month/:year/', (req, res) => {
+router.get('/:month/:year/', authenticate, (req, res) => {
     let { month, year } = req.params;
     let startDate = new Date(year, month - 1);
     let endDate = new Date(year, month);
@@ -43,7 +41,8 @@ router.get('/:month/:year/', (req, res) => {
         { resultDate: {
             "$gte": startDate,
             "$lt": endDate
-        } 
+        },
+        user: req.user.id 
     }
     ).then((results) => {
         res.send({ results });

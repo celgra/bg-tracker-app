@@ -11,7 +11,10 @@ export const ADD_RESULT_SUCCESS = "ADD_RESULT_SUCCESS";
 const ROOT_URL = '/api';
 
 export function fetchResultsByMonth(month: number, year: number): ThunkAction {
-    const request = axios.get(`${ROOT_URL}/results/${month}/${year}`);
+    const request = axios.get(
+        `${ROOT_URL}/results/${month}/${year}`,
+        { headers: { "x-auth": localStorage.getItem('auth') } }
+    );
     return (dispatch) => {
         request.then((res) => {
             const { data: { results } }  = res;
