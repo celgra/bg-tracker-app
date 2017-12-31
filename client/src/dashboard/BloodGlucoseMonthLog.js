@@ -38,7 +38,7 @@ class BloodGlucoseMonthLog extends Component {
         let { month, year } = this.props;
 
         if ( (month - 1) < 1) {
-            month = 11
+            month = 12
             year--;
         } else {
             month--;
@@ -61,7 +61,8 @@ class BloodGlucoseMonthLog extends Component {
         let form = this.state.addingResult ?
         <BgResultForm
         closeForm={() => {this.disableResultForm()}}
-        history={this.props.history}/>
+        history={this.props.history}
+        />
         : null;
 
         return(

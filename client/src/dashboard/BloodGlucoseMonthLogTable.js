@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 
+import NoResults from './NoResults';
+
 const parseDateWithMoment = (date) => {
     return moment(date)
         .format("MMMM D YYYY h:mm A");
@@ -8,20 +10,22 @@ const parseDateWithMoment = (date) => {
 
 const BloodGlucoseMonthTable = (props) => {
     let rows = props.results ? props.results.map(result => {
-            return (
-                <tr key={result._id}>
-                    <td>
-                        {result.bloodGlucoseLevel} mg/dL
-                    </td>
-                    <td>
-                        {parseDateWithMoment(result.resultDate)}
-                    </td>
-                    <td>
-                        {result.resultContext}
-                    </td>
-                </tr>
-            );
-        }) : null;
+        return (
+            <tr key={result._id}>
+                <td>
+                    {result.bloodGlucoseLevel} mg/dL
+                </td>
+                <td>
+                    {parseDateWithMoment(result.resultDate)}
+                </td>
+                <td>
+                    {result.resultContext}
+                </td>
+            </tr>
+        );
+    }) :  null;
+
+    let noResults = <NoResults />;
 
     return (
         <table className="table table-bordered table-striped table-condensed table-inverse">
@@ -44,7 +48,7 @@ const BloodGlucoseMonthTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {rows}
+                {rows? rows: noResults}
             </tbody>
         </table>
     );

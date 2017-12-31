@@ -16,9 +16,7 @@ export default function (state: AuthState = { auth: false, error: null }, action
 };
 
 const changeAuth = (state: AuthState, action: AuthAction): AuthState => {
-    return action.payload ? { 
-        ...state, auth: action.payload, error: null 
-    } : { 
-        ...state, auth:action.payload, error: {} 
+    return { 
+        ...state, auth: action.payload, error: null
     }; 
 };

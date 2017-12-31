@@ -16,7 +16,7 @@ type Props = {
     history: any
 } & FormProps;
 
-class BgResultForm extends Component {
+class BgResultForm extends Component<any, Props, any> {
     props: Props
 
     renderField(field) {
@@ -41,6 +41,7 @@ class BgResultForm extends Component {
     onSubmit(values: Values) {
         this.props.addResult(values);
         this.props.history.push('/');
+        this.props.closeForm();
     }
 
     render() {
@@ -52,7 +53,8 @@ class BgResultForm extends Component {
                 </div>
                 <div className="card-block">
                     <div className="row">
-                        <div className="col-sm-12">
+                        <div className="col-sm-2"></div>
+                        <div className="col-sm-8">
                             <form onSubmit={handleSubmit(this.onSubmit.bind(this))} >
                                 <Field
                                 name="glucose"
@@ -72,6 +74,7 @@ class BgResultForm extends Component {
                                 </button>
                             </form>
                         </div>
+                        <div className="col-sm-2"></div>
                     </div>
                 </div>
             </div>

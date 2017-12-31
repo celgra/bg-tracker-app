@@ -1,12 +1,13 @@
 //@flow
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { signUp } from './../actions/actions_authentication';
 
 import type { FormProps, FieldProps } from 'redux-form'
 
-type Values = { email:string, password: string };
+type Values = { email: string, password: string };
 
 type RenderFieldProps = { 
     label: string,
@@ -93,6 +94,11 @@ class SignUp extends Component {
                                                 Sign Up
                                             </button>
                                         </form>
+                                        <Link 
+                                            style={{ marginBottom: '5px' }} 
+                                            to='/sigin'>
+                                            Go back
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

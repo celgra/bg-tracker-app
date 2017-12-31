@@ -26,7 +26,7 @@ class SignInContainer extends Component {
                 <SignIn
                 error={error} 
                 authenticate={() => authenticate(true)} 
-                logIn={(e, p) => logIn(e, p)}
+                logIn={(email, password) => logIn(email, password)}
                 signUp={() => this.signUp()}/>
             </div>
         );
