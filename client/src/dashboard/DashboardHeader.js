@@ -18,7 +18,7 @@ class DashboardHeader extends Component {
 
         return (
             <div className='card-header text-center'>                
-                <h1 className='h3 m-0'>
+                <h1 className='h3 m-0 font-weight-bold'>
                     <i 
                         className='fa fa-chevron-left fa-2x'
                         style={faGlyphStyle}
