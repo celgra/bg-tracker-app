@@ -13,7 +13,7 @@ const ROOT_URL = '/api';
 export function fetchResultsByMonth(month: number, year: number): ThunkAction {
     const request = axios.get(
         `${ROOT_URL}/results/${month}/${year}`,
-        { headers: { "x-auth": localStorage.getItem('auth') } }
+        { headers: { 'x-auth': localStorage.getItem('auth') } }
     );
     return (dispatch) => {
         request.then((res) => {
@@ -33,7 +33,7 @@ export function addResult(values: ResultValues, e: Event): ThunkAction {
         bloodGlucoseLevel: values.glucose
     };
 
-    const request = axios.post(`${ROOT_URL}/results/`, newResult, { headers: { "x-auth": localStorage.getItem('auth') } });
+    const request = axios.post(`${ROOT_URL}/results/`, newResult, { headers: { 'x-auth': localStorage.getItem('auth') } });
 
     return (dispatch) => {
         dispatch({ type: ADD_RESULT });

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import BloodGlucoseTable from './BloodGlucoseTable';
 import NoResults from './NoResults';
 
-class DashboardBody extends Component {
+class DashboardBody extends PureComponent {
     render() {
         const { results } = this.props;
         return (

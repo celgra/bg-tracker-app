@@ -38,7 +38,7 @@ class DashboardHeader extends Component {
                     Monthly Average Blood Glucose
                 </h1>
                 <h1 className='h4 m-0'>
-                    {monthlyAverage > 0 ? `${monthlyAverage.toFixed(2)} mg/dL` : 'N/A'}
+                    {monthlyAverage > 0 ? `${monthlyAverage} mg/dL` : 'N/A'}
                 </h1>
                 <AddButton
                     css={'pull-left'}

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const _ = require('lodash');
+
 const { authenticate } = require('./../middleware/authenticate');
 const { ObjectID } = require('mongodb');
 const { Result } = require('./../models/result');

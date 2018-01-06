@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import DashboardContainer from '../dashboard/DashboardContainer';
+import ReportContainer from '../report/ReportContainer';
 
 const Main = () => {
     return (
@@ -12,6 +13,10 @@ const Main = () => {
                     exact 
                     path="/" 
                     component={DashboardContainer}
+                />
+                <Route 
+                    path="/report"
+                    component={ReportContainer}
                 />
               </Switch>
             </div>

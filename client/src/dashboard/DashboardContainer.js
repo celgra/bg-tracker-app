@@ -93,8 +93,11 @@ class DashboardContainer extends Component {
 function mapStateToProps(state) {
     const { month, year } = state.bgData;
     const results = _.values(state.bgData.results);
-    const monthlyAverage =  results.length > 0 ? 
+    
+    let monthlyAverage =  results.length > 0 ? 
         results.reduce((acc, val) => acc + val.bloodGlucoseLevel, 0) / results.length : 0;
+    
+    monthlyAverage = monthlyAverage.toFixed(0);
 
     return { month, year, results, monthlyAverage };
 }
