@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
-import BloodGlucoseMonthLog from './dashboard/BloodGlucoseMonthLog';
 
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Main from './components/Main';
 //import logo from './logo.svg';
 //import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="app">
+      <div className="app header-fixed sidebar-fixed">
         <Header {...this.props} />
         <div className="app-body">
-          <main className="main" style={{marginTop: 20}}>
-            <div>
-              <Switch>
-                <Route exact path="/" component={BloodGlucoseMonthLog} />
-              </Switch>
-            </div>
-          </main>
+          <Sidebar />
+          <Main />
         </div>
         <footer className="app-footer">
         </footer>

@@ -5,22 +5,21 @@ import './AddButton.css';
 
 type Props = { 
     isAddingResult: boolean,
-    addResult: Function 
+    addResult: Function,
+    css: string 
 };
 
 const AddButton = (props: Props) => {
-    if(props.isAddingResult){
-        return null;
-    } else {
-        return (
-            <button
-            type="button"
-            className="btn btn-primary add-button"
-            onClick={props.addResult}>
-                Add
-            </button>
-        );
-    }
+    const css = `btn btn-primary add-button ${props.css} ${props.isAddingResult ? 'disabled' : ''}`
+
+    return (
+        <button
+        type='button'
+        className={css}
+        onClick={props.addResult}>
+            Add
+        </button>
+    );
 };
 
 export default AddButton;

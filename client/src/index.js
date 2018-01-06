@@ -25,9 +25,21 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <Switch>
-                    <Route path="/signin" name="SignIn" component={withNoAuth(SignInContainer)} />
-                    <Route path="/signup" name="SignUp" component={withNoAuth(SignUpContainer)} />
-                    <Route path="/" name="Home" component={withAuth(App)} />
+                    <Route 
+                        path="/signin" 
+                        name="SignIn" 
+                        component={withNoAuth(SignInContainer)} 
+                    />
+                    <Route 
+                        path="/signup" 
+                        name="SignUp" 
+                        component={withNoAuth(SignUpContainer)} 
+                    />
+                    <Route 
+                        path="/" 
+                        name="Dashboard" 
+                        component={withAuth(App)} 
+                    />
                 </Switch>
             </div>
         </BrowserRouter>

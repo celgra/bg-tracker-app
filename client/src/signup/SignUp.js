@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
+
 import { connect } from 'react-redux';
-import { signUp } from './../actions/actions_authentication';
+import { signUp, authenticate } from './../actions/actions_authentication';
 
 import type { FormProps, FieldProps } from 'redux-form'
 
@@ -96,7 +97,9 @@ class SignUp extends Component {
                                         </form>
                                         <Link 
                                             style={{ marginBottom: '5px' }} 
-                                            to='/sigin'>
+                                            to='/sigin'
+                                            onClick={() => { authenticate(false) }}
+                                        >
                                             Go back
                                         </Link>
                                     </div>
@@ -113,12 +116,12 @@ class SignUp extends Component {
 function validate(values: { glucose: number }) {
     const errors = {};
 
-    if (!values.glucose) {
-        errors.glucose = "Enter a Glucose reading.";
+    if (!values.email) {
+        errors.email = "Enter a valid email address.";
     }
 
-    if (values.glucose < 1) {
-        errors.glucose = "Glucose reading must be greater than zero.";
+    if (!values.password) {
+        errors.password = "Enter a valid password.";
     }
 
     return errors;

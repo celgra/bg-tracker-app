@@ -47,7 +47,7 @@ class BgResultForm extends Component<any, Props, any> {
     render() {
         let { closeForm, handleSubmit } = this.props;
         return (
-            <div className="card">
+            <div className="card margin-card">
                 <div className="card-header">
                     Add BG Reading
                 </div>
