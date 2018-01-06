@@ -20,14 +20,14 @@ class DashboardHeader extends Component {
             <div className='card-header text-center'>                
                 <h1 className='h3 m-0 font-weight-bold'>
                     <i 
-                        className='fa fa-chevron-left fa-2x'
+                        className='pull-left fa fa-chevron-left fa-2x'
                         style={faGlyphStyle}
                         onClick={decrementMonth}
                     >
                     </i>
                     {moment({ month }).format('MMMM')} / {year}
                     <i 
-                        className='fa fa-chevron-right fa-2x'
+                        className='pull-right fa fa-chevron-right fa-2x'
                         style={faGlyphStyle}
                         onClick={incrementMonth}
                     >

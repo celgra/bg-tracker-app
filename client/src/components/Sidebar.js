@@ -11,7 +11,7 @@ const SideBar = () => {
                   <NavLink
                     className='nav-link'
                     to="/">
-                    Dashboard
+                    <i className="fa fa-table"></i>Dashboard
                   </NavLink>
                 </li>
               </ul>
