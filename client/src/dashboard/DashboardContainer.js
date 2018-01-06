@@ -16,7 +16,7 @@ class DashboardContainer extends Component {
             addingResult: false
         };
     }
-
+    
     componentDidMount() {
         const { month, year } = this.props;
 

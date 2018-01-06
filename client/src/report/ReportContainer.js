@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import { getReport } from '../actions/actions_report';
+
+import Report from './Report';
 
 class ReportContainer extends Component {
     componentDidMount() {
@@ -10,22 +11,31 @@ class ReportContainer extends Component {
     }
 
     render() {
-        const request = axios.get('/api/a1c', { 
-            headers: { 
-                'x-auth': localStorage.getItem('auth') 
-            } 
-        }).then((res) => console.log(res.data));
+        const {
+            a1c,
+            resultCount,
+            averageBloodGlucose
+        } = this.props;
+
         return (
-            <div>Hello</div>
+            <div>
+                <Report 
+                    a1c={a1c}
+                    resultCount={resultCount}
+                    averageBloodGlucose={averageBloodGlucose}
+                />
+            </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { 
-        a1c, 
-        resultCount, 
-        averageBloodGlucose 
+    const {
+        report: {
+            a1c, 
+            resultCount, 
+            averageBloodGlucose
+        }
     } = state;
 
     return {
