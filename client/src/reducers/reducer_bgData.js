@@ -1,6 +1,9 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { FETCH_RESULTS, ADD_RESULT_SUCCESS } from '../actions/actions_bgData';
+import { 
+    FETCH_RESULTS, 
+    ADD_RESULT_SUCCESS 
+} from '../actions/actions_bgData';
 
 const date = moment();
 const month = date.month() + 1;
@@ -19,7 +22,6 @@ export default function (state = initState, action) {
                 year: action.payload.year
             };
         case ADD_RESULT_SUCCESS:
-            console.log('adding');
             return { 
                 ...state, 
                 results: { 

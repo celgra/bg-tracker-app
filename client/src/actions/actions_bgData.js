@@ -1,5 +1,5 @@
-//@flow
-import axios from 'axios'; 
+import axios from 'axios';
+import moment from 'moment';
 
 import type { ThunkAction } from './action_flowtypes'; 
 
@@ -26,9 +26,7 @@ export function fetchResultsByMonth(month: number, year: number): ThunkAction {
     };
 }
 
-type ResultValues = { glucose: number };
-
-export function addResult(values: ResultValues, e: Event): ThunkAction {
+export function addResult(values, e) {
     const newResult = {
         bloodGlucoseLevel: values.glucose
     };
@@ -39,7 +37,9 @@ export function addResult(values: ResultValues, e: Event): ThunkAction {
         dispatch({ type: ADD_RESULT });
         request.then((res) => {
             const { data: { result } } = res;
-            dispatch({ type: ADD_RESULT_SUCCESS, payload: result })
+            if (moment(result.resultDate).month() === moment().month()) {
+                dispatch({ type: ADD_RESULT_SUCCESS, payload: result })
+            }
         }, (err) => {
             console.log(err);
         });
