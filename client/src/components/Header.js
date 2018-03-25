@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
-import { authenticate } from './../actions/actions_authentication';
+import { authenticate } from './../actions/actions_auth';
 
 class Header extends Component {
 

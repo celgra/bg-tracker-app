@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authenticate } from './../actions/actions_authentication';
+import { authenticate } from './../actions/actions_auth';
 
 export default function (ComposedComponent) { 
     class NotAuthenticated extends Component {

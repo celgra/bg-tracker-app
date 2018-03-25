@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import BGReducer from './reducer_bgData';
-import AuthReducer from './reducer_authentication';
+import AuthReducer from './reducer_auth';
 import ReportReducer  from './reducer_report';
 
 const rootReducer = combineReducers({

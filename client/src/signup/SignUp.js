@@ -1,32 +1,14 @@
-//@flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
 import { connect } from 'react-redux';
-import { signUp, authenticate } from './../actions/actions_authentication';
-
-import type { FormProps, FieldProps } from 'redux-form'
-
-type Values = { email: string, password: string };
-
-type RenderFieldProps = { 
-    label: string,
-    type: string, 
-    placeholder: string 
-} & FieldProps;
-
-type Props = { 
-    signUp(email: string, password: string): Function 
-} & FormProps;
-
-type SignUpState = { auth: { auth: boolean }, error: {} | null };
+import { signUp, authenticate } from './../actions/actions_auth';
 
 class SignUp extends Component {
-    props: Props;
 
-    renderField(field: RenderFieldProps) {
-        const { meta: { touched, error } }: RenderFieldProps = field;
+    renderField(field) {
+        const { meta: { touched, error } } = field;
         //let err = this.props.error;
         const className = `form-control ${ touched && error ? 'has-danger' : ''}`;
 
