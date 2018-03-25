@@ -33,8 +33,6 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
-    "flow-bin": "^0.52.0",
-    "flow-typed": "^2.1.5",
     "nodemon": "^1.14.6"
   }
 }
