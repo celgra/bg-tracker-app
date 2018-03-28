@@ -27,6 +27,8 @@
     "lodash": "^4.17.4",
     "mongod": "^2.0.0",
     "mongoose": "^4.11.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "redux-devtools-extension": "^2.13.2",
     "validator": "^8.0.0"
