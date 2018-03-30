@@ -71,13 +71,13 @@ class DashboardContainer extends Component {
             <div className='container'>
                 <div className='card'>
                     <DashboardHeader
-                       month={month - 1}
-                       year={year}
-                       incrementMonth={() => this.incrementMonth()}
-                       decrementMonth={() => this.decrementMonth()}
-                       monthlyAverage={monthlyAverage}
-                       addingResult={this.state.addingResult}
-                       enableResultForm={() => this.enableResultForm()}
+                        month={month - 1}
+                        year={year}
+                        incrementMonth={() => this.incrementMonth()}
+                        decrementMonth={() => this.decrementMonth()}
+                        monthlyAverage={monthlyAverage}
+                        addingResult={this.state.addingResult}
+                        enableResultForm={() => this.enableResultForm()}
                     />
                     {form}
                     <DashboardBody 
@@ -107,4 +107,6 @@ const mapDispatchToProps = {
     addResult
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps)(DashboardContainer);
