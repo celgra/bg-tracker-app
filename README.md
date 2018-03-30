@@ -11,7 +11,6 @@
     * React.js
     * React-Redux
     * Redux-Thunk
-    * Flow Static Typing
 
 A personal project to create a blood glucose logbook app for diabetics or anyone else interested in tracking bg data.
 
