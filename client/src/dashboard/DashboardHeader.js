@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import AddButton from './AddButton';
-const faGlyphStyle = { verticalAlign: 'middle' };
+const faGlyphStyle = { verticalAlign: 'middle', cursor: 'pointer' };
 
 class DashboardHeader extends Component {
     render() {
@@ -35,10 +35,10 @@ class DashboardHeader extends Component {
                 </h1>
                 <br />
                 <h1 className='h4 m-0'>
-                    Monthly Average Blood Glucose
+                    {monthlyAverage > 0 ? 'Monthly Average Blood Glucose' : ''}
                 </h1>
                 <h1 className='h4 m-0'>
-                    {monthlyAverage > 0 ? `${monthlyAverage} mg/dL` : 'N/A'}
+                    {monthlyAverage > 0 ? `${monthlyAverage} mg/dL` : ''}
                 </h1>
                 <AddButton
                     css={'pull-left'}

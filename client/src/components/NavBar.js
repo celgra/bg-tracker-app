@@ -3,11 +3,13 @@ import React from 'react';
 
 const NavBar = (props) => {
     return (
-        <div>
-            <ul className="nav navbar-nav ml-auto">   
-                <li>
-                    <a className="nav-item nav-link" 
-                    onClick={() => props.signOut()}>
+        <div style={ { marginRight: '10px' } }>
+            <ul className="nav navbar-nav">   
+                <li classname="nav-item">
+                    <a 
+                        className="nav-link"
+                        style={ { cursor: 'pointer' } }
+                        onClick={() => props.signOut()}>
                         Sign Out
                     </a>
                 </li>
