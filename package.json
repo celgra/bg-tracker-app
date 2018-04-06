@@ -7,13 +7,17 @@
     "node": "7.7.4",
     "npm": "5.0.4"
   },
+  "jest": {
+     "testRegex": "./tests/.*.js$",
+     "rootDir": "."
+  },
   "scripts": {
     "start": "node dist/server.js",
     "server": "nodemon server/server.js --exec babel-node",
     "build": "babel server -d dist",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client && npm run build"
   },
   "author": "",
@@ -27,15 +31,19 @@
     "moment": "^2.22.0",
     "mongod": "^2.0.0",
     "mongoose": "^4.11.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1",
     "redux-devtools-extension": "^2.13.2",
     "validator": "^8.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
-    "nodemon": "^1.14.6"
+    "install": "^0.11.0",
+    "jest": "^22.4.3",
+    "nodemon": "^1.14.6",
+    "npm": "^5.8.0",
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0"
   }
 }
