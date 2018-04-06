@@ -1,13 +1,13 @@
 require('./config/config');
-const express = require('express');
-const path = require('path')
-const bodyParser = require('body-parser');
+import express from 'express';
+import path from 'path';
+import bodyParser from 'body-parser';
 
-const routes = require('./routes');
+import routes from './routes';
 
 const port = process.env.PORT || 3001;
 
-const { mongoose } = require('./db/mongoose');
+import mongoose from './db/mongoose';
 
 const app = express();
 

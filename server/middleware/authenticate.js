@@ -1,4 +1,4 @@
-const { User } =  require('./../models/user');
+import User from './../models/user';
 
 const authenticate = (req, res, next) => {
     let token = req.header('x-auth');

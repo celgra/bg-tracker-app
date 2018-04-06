@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const Result = mongoose.model('Result', {
@@ -32,4 +32,4 @@ const Result = mongoose.model('Result', {
     }
 });
 
-module.exports = { Result }
+export default Result;

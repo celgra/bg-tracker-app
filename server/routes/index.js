@@ -1,10 +1,12 @@
-const routes = require('express').Router();
-const results = require('./result');
-const a1c = require('./a1c');
-const users = require('./user');
+import { Router } from 'express';
+import results from './result';
+import a1c from './a1c';
+import users from './user';
+
+const routes = Router();
 
 routes.use('/results', results);
 routes.use('/a1c', a1c);
 routes.use('/users', users);
 
-module.exports = routes;
+export default routes;

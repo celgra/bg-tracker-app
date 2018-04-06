@@ -1,9 +1,11 @@
-const router = require('express').Router();
-const moment = require('moment');
+import { Router } from 'express';
+import moment from 'moment';
 
-const { authenticate } = require('./../middleware/authenticate');
-const { ObjectID } = require('mongodb');
-const { Result } = require('./../models/result');
+import { authenticate } from './../middleware/authenticate';
+import { ObjectID } from 'mongodb';
+import { Result } from './../models/result';
+
+const router = Router();
 
 router.get('/', authenticate, (req, res) => {
     const startDate = moment().subtract(90, 'days').format('x');
@@ -28,4 +30,4 @@ router.get('/', authenticate, (req, res) => {
      });
 });
 
-module.exports = router;
+export default router;

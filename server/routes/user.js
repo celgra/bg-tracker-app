@@ -1,7 +1,9 @@
-const router = require('express').Router();
-const _ = require('lodash');
-const { User } = require('./../models/user');
-const { authenticate } = require('./../middleware/authenticate');
+import { Router } from 'express';
+import _ from 'lodash';
+import User from './../models/user';
+import { authenticate } from './../middleware/authenticate';
+
+const router = Router();
 
 router.post('/', (req, res) => {
     console.log('posting user')
@@ -43,4 +45,4 @@ router.delete('/me/token', authenticate, (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

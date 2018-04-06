@@ -1,9 +1,11 @@
-const router = require('express').Router();
-const _ = require('lodash');
+import { Router } from 'express';
+import _ from 'lodash';
 
-const { authenticate } = require('./../middleware/authenticate');
-const { ObjectID } = require('mongodb');
-const { Result } = require('./../models/result');
+import { authenticate } from'./../middleware/authenticate';
+import { ObjectID } from 'mongodb';
+import Result from './../models/result';
+
+const router = Router();
 
 router.get('/', authenticate, (req, res) => {
     Result.find({ user: req.user.id }).then((results) => {
@@ -52,4 +54,4 @@ router.get('/:month/:year/', authenticate, (req, res) => {
     })
 });
 
-module.exports = router;
+export default router;
