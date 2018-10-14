@@ -9,13 +9,13 @@ import mongoose from './db/mongoose';
 
 const app = express();
 
+app.use(compression());
+
 app.use(
     express.static(path
         .resolve(__dirname, '..', 'client', 'build')
     )
 );
-
-app.use(compression());
 
 app.use(bodyParser.json());
 
