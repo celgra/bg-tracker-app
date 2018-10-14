@@ -16,6 +16,10 @@ var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
+var _compression = require('compression');
+
+var _compression2 = _interopRequireDefault(_compression);
+
 var _routes = require('./routes');
 
 var _routes2 = _interopRequireDefault(_routes);
@@ -27,6 +31,8 @@ var _mongoose2 = _interopRequireDefault(_mongoose);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+
+app.use((0, _compression2.default)());
 
 app.use(_express2.default.static(_path2.default.resolve(__dirname, '..', 'client', 'build')));
 
