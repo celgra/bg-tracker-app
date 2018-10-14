@@ -1,8 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
 
-import type { ThunkAction } from './action_flowtypes'; 
-
 export const FETCH_RESULTS = "FETCH_RESULTS";
 export const FETCH_RESULTS_ERROR = "FETCH_RESULTS_ERROR";
 export const ADD_RESULT = "ADD_RESULT";
@@ -10,7 +8,7 @@ export const ADD_RESULT_SUCCESS = "ADD_RESULT_SUCCESS";
 
 const ROOT_URL = '/api';
 
-export function fetchResultsByMonth(month: number, year: number): ThunkAction {
+export function fetchResultsByMonth(month, year) {
     const request = axios.get(
         `${ROOT_URL}/results/${month}/${year}`,
         { headers: { 'x-auth': localStorage.getItem('auth') } }
