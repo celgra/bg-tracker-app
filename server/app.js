@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
+import compression from 'compression';
 
 import routes from './routes';
 
@@ -13,6 +14,8 @@ app.use(
         .resolve(__dirname, '..', 'client', 'build')
     )
 );
+
+app.use(compression());
 
 app.use(bodyParser.json());
 
