@@ -13,3 +13,4 @@ settings.json
 .flowconfig
 /flow-typed
 .eslintrc.json
+.vscode/
